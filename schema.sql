@@ -7,5 +7,6 @@ CREATE TABLE animals (
 	escape_attempts INT NOT NULL,
 	neutered boolean NOT NULL,
 	weight_kg decimal NOT NULL,
+	species varchar(50) NOT NULL,
 	PRIMARY KEY (id)
 );
