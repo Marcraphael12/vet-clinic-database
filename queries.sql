@@ -100,7 +100,7 @@ join species on species.name = 'Pokemon' and species.id = animals.species_id;
 
 -- List all owners and their animals, remember to include those that don't own any animal.
 select owners.full_name as owner_name, animals.name as animal_name from owners
-join animals on owners.owners_id = animals.owner_id;
+left join animals on owners.owners_id = animals.owner_id;
 
 -- How many animals are there per species?
 select count(*) as nuber_of_animals, species.name as species from animals
