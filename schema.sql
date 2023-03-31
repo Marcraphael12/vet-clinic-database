@@ -30,3 +30,25 @@ alter table animals add species_id int references species(id);
 
 -- Add column owner_id which is a foreign key referencing the owners table
 alter table animals add owner_id int references owners(owners_id);
+
+create table vets (
+	id int primary key generated always as identity,
+	name varchar(100) ,
+	age int,
+	date_of_graduation date
+);
+
+-- There is a many-to-many relationship between the tables species and vets:
+-- Create a "join table" called specializations to handle this relationship
+create table specializations (
+	vets_id int references vets(id) on delete cascade on update cascade,
+	species_id int references species(id) on delete cascade on update cascade 
+);
+
+-- There is a many-to-many relationship between the tables animals and vets
+-- Create a "join table" called visits to handle this relationship
+create table visists (
+	vets_id int references vets(id) on delete cascade on update cascade,
+	id int references animals(id) on delete cascade on update cascade,
+	date_of_visit date
+);
