@@ -52,3 +52,10 @@ create table visists (
 	id int references animals(id) on delete cascade on update cascade,
 	date_of_visit date
 );
+
+-- Add an email column to your owners table
+alter table owners add column email varchar(120);
+
+create index vet_index on visists(vets_id);
+create index visits_index on visists(id);
+create index owner_index on owners(email asc);
